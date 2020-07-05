@@ -1,0 +1,101 @@
+{
+  "project_root": "D:\\tensorflow2\\captcha-ocr",
+  "charset": {
+    "image_root": "charset",
+    "chars": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "chars_file": ""
+  },
+  "captcha":{
+    ":": "从charset创建captcha",
+    "num_image": 3000,
+    "num_train_image": 2500,
+    "max_text_length": 4,
+    "min_text_length": 3,
+    "width": [224,224],
+    "height": [96,96],
+    ":": "分割任务中所有标签放大倍数,和类别数目相乘不能超过255",
+    "pixel2label": 255,
+    "ratio_each_size": {
+        "small":0.0,
+        "medium":0.8,
+        "big":0.3
+    },
+    ":": "训练和测试",
+    "image_root": "sample\\images",
+    "annotation_file": "sample\\images\\annotation.txt"
+  },
+  "task_toy": {
+    ":": "CNN输入尺寸，默认channel=3",
+    "input_width": 224,
+    "input_height": 96,
+    ":": "训练tfrc路径",
+    "train_tfrec_file": "sample\\toy\\train.tfrec",
+    "test_tfrec_file": "sample\\toy\\test.tfrec",
+    ":": "模型存储路径",
+    "output_folder": "output\\task_toy\\",
+    ":": "训练超参，默认Adam(1e-4)",
+    "epochs": 100,
+    "batch_size": 8
+  },
+
+  "task_segment": {
+    "input_width": 224,
+    "input_height": 96,
+    "train_tfrec_file": "sample\\segment\\train.tfrec",
+    "test_tfrec_file": "sample\\segment\\test.tfrec",
+    ":": "mobilenet限制输入必须时正方形，而且必须是一些固定的尺寸，此处取长宽最大值",
+    "net_input_size": 224,
+    ":": "类别权重，标签作为key，key的个数等于num_classes+1",
+    "class_weight": { "0": 1, "1": 1 },
+    "epochs": 100,
+    "output_folder": "output\\task_segment\\",
+    "batch_size": 8,
+    "num_classes": 1
+  },
+
+  "task_ocr": {
+    "input_width": 128,
+    "input_height": 128,
+    "train_tfrec_file": "sample\\ocr\\train.tfrec",
+    "test_tfrec_file": "sample\\ocr\\test.tfrec",
+    "epochs": 100,
+    "output_folder": "output\\task_ocr\\",
+    "batch_size": 32
+  },
+
+  ":": "模拟一个网页，随机显示一个验证码图片",
+  "captcha_server":
+  {
+    "host": "127.0.0.1",
+    "port": 7000,
+    ":": "页面名称",
+    "page": "captcha"
+  },
+  ":": "模拟一个网页，接收一个验证码图片，返回识别结果",
+  "recognize_server":
+  {
+    "host": "127.0.0.1",
+    "port": 7100,
+    ":": "页面名称",
+    "page": "ocr",
+    "output_folder": "output/recogize_server/"
+  },
+
+  ":": "测试从url下载验证码图像，发送给识别服务，保存识别结果",
+  "recognize_client":
+  {
+    "use_local_image": 1,
+    "output_folder": "output/recognize_client/"
+  }
+}
