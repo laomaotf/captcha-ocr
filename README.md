@@ -3,6 +3,8 @@
 [cnn_captcha](https://github.com/nickliqian/cnn_captcha)  
 [yymnist](https://github.com/YunYang1994/yymnist)
 
+ 
+
 # 2. 代码说明
 ## 2.1 配置文件
 工程配置文件只有一个config.json, 不同任务对应不同的json字段，
@@ -21,7 +23,7 @@
 * 脚本: tools/task_toy_gen_tfrec.py, task_toy_train.py
 * 部署: task_exports.CLASS_TOY
 
-## 2.4 字符分割 
+## 2.4 字符分割 [UNET]
 * 功能: 验证码图片 -> UNET -> 字符mask -> 字符bbox
 * 配置: config::task_segment字段
 * 脚本: tools/task_segment_gen_tfrec.py, task_segment_train.py
@@ -36,6 +38,10 @@
 * 功能: 组合两个子任务，完成验证码识别。字符图片 -> 字符分割 -> 单字符OCR -> 验证码
 * 部署: task_exports.CLASS_SEGMENT_OCR
 
+## 2.7 字符检测 [简化CenterNet]
+* 功能: 字符图片 -> CNN -> 字符框
+* 配置: config::task_detect
+* 脚本: tools/task_detect_gen_tfrec.py, task_detect_train.py
 
 # 3. web端部署
 ## 3.1 模拟验证码生成服务

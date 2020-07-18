@@ -1,5 +1,5 @@
 {
-  "project_root": "D:\\tensorflow2\\captcha-ocr",
+  "project_root": "D:\\tensorflow2\\captchar-orc-local\\captcha-ocr",
   "charset": {
     "image_root": "charset",
     "chars": [
@@ -60,6 +60,22 @@
     "class_weight": { "0": 1, "1": 1 },
     "epochs": 100,
     "output_folder": "output\\task_segment\\",
+    "batch_size": 8,
+    "num_classes": 1
+  },
+
+   "task_detect": {
+    "input_width": 224,
+    "input_height": 96,
+     ":":"预测特征图下采样次数，和具体网络有关",
+     "down_ratio": 4,
+     ":": "中心点gt的高斯半径（特征图尺度下）",
+     "fm_radius": 1,
+    "train_tfrec_file": "sample\\detect\\train.tfrec",
+    "test_tfrec_file": "sample\\detect\\test.tfrec",
+    "epochs": 100,
+    "output_folder": "output\\task_detect\\",
+     "finetune_flag": 0,
     "batch_size": 8,
     "num_classes": 1
   },

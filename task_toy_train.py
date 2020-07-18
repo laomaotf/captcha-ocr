@@ -262,6 +262,10 @@ class TrainModel:
             print('model resumed from: {}, start at epoch: {}'.format(latest_ckpt, start_epoch))
         else:
             print('passing resume since weights not there. training from scratch')
+
+        # 连续5个epoch loss的变化小于1e-2 earlystop
+        #callbacks = [keras.callbacks.EarlyStopping(patience=5, min_delta=1e-2)]
+
         # callback的一些配置可能影响训练速度
         # profile_batch of TensorBoard() will make training in eager model(slowing training), set zero to disable it
         callbacks = [tf.keras.callbacks.ModelCheckpoint(ckpt_path, save_weights_only=True, verbose=1, save_freq="epoch"),
