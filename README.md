@@ -43,6 +43,12 @@
 * 配置: config::task_detect
 * 脚本: tools/task_detect_gen_tfrec.py, task_detect_train.py
 
+
+## 2.8 CRNN 
+* 功能: 字符图片 -> CRNN -> 验证码
+* 配置: config::task_crnn
+* 脚本: tools/task_crnn_gen_tfrec.py, task_crnn_train.py
+
 # 3. web端部署
 ## 3.1 模拟验证码生成服务
 * 功能: 生成一个page，随机显示一个验证码图片
