@@ -49,6 +49,20 @@
     "batch_size": 8
   },
 
+  "task_crnn": {
+    ":": "CNN输入尺寸，默认channel=3",
+    "input_width": 100,
+    "input_height": 32,
+    ":": "训练tfrc路径",
+    "train_tfrec_file": "sample\\crnn\\train.tfrec",
+    "test_tfrec_file": "sample\\crnn\\test.tfrec",
+    ":": "模型存储路径",
+    "output_folder": "output\\task_crnn\\",
+    ":": "训练超参，默认Adam(1e-4)",
+    "epochs": 100,
+    "batch_size": 8
+  },
+
   "task_segment": {
     "input_width": 224,
     "input_height": 96,
